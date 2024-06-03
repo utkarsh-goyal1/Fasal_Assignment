@@ -5,6 +5,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { tokenCheck } from '../helperToken';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { baseURL, OMDB_API_KEY } from '../DB.js';
+
 
 function CreateList() {
     const navigate = useNavigate();
@@ -44,7 +46,7 @@ function CreateList() {
         // console.log('List Title:', title);
         // console.log('Movies:', movies);
         try {
-            const response = await axios.post('http://localhost:8888/createList', {
+            const response = await axios.post(`${baseURL}/createList`, {
                 id,
                 title,
                 movies,

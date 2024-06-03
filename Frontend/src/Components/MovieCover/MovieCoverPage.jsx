@@ -1,8 +1,6 @@
 import { useParams } from "react-router-dom"
 import Banner from "./Banner"
 import { useEffect, useState } from "react";
-import axios from 'axios'
-import baseURL from "../../DB";
 import { useLocation } from "react-router-dom";
 
 function MovieCoverPage() {

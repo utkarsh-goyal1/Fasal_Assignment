@@ -1,9 +1,10 @@
 import React from 'react';
 import axios from 'axios';
-import baseURL from '../DB.js';
+import { baseURL, OMDB_API_KEY } from '../DB.js';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { tokenCheck } from '../helperToken.js';
+
 
 function Home() {
     const navigate = useNavigate();
@@ -38,7 +39,7 @@ function Home() {
 
     const fetchUserData = async () => {
         try {
-            const response = await axios.get(`http://localhost:8888/getCreatedLists/${id}`);
+            const response = await axios.get(`${baseURL}/getCreatedLists/${id}`);
             console.log(response.data);
             setLists(response.data.createdLists);
 
@@ -52,7 +53,8 @@ function Home() {
 
     const fetchData = async () => {
         try {
-            let response = await axios.get(`https://www.omdbapi.com/?apikey=d023ff1c&t=${searchTerm}&plot=full`);
+
+            let response = await axios.get(`https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&t=${searchTerm}&plot=full`);
             if (response.status === 200) {
                 let data = response.data;
                 console.log(data);

@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { baseURL, OMDB_API_KEY } from '../DB.js';
+
 
 function Login() {
     const navigate = useNavigate();
@@ -24,7 +26,7 @@ function Login() {
     };
     const submitData = async () => {
         try {
-            const response = await axios.post('http://localhost:8888/login',
+            const response = await axios.post(`${baseURL}/login`,
                 {
                     email,
                     password

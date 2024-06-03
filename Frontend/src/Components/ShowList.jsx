@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useLocation, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { tokenCheck } from '../helperToken';
+import { baseURL, OMDB_API_KEY } from '../DB.js';
+
 
 function ShowList() {
     const navigate = useNavigate();
@@ -15,7 +17,7 @@ function ShowList() {
 
     const fetchData = async (URLid) => {
         try {
-            const response = await axios.get(`http://localhost:8888/ShowList?id=${URLid}`);
+            const response = await axios.get(`${baseURL}/ShowList?id=${URLid}`);
             if (response.data.isPublic != true) {
                 let temp = tokenCheck();
                 if (!temp) {
